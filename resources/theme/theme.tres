@@ -1,7 +1,32 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://y41qloh1nmbj"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://y41qloh1nmbj"]
 
+[ext_resource type="Texture2D" uid="uid://gcpyc2yhqybo" path="res://assets/ui/ui.png" id="1_2njmo"]
 [ext_resource type="FontFile" uid="uid://b8tm40xjyyyb8" path="res://resources/theme/Rockboxcond12.ttf" id="1_rewvk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2d08q"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+texture = ExtResource("1_2njmo")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(16, 0, 16, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7cwug"]
+texture = ExtResource("1_2njmo")
+texture_margin_left = 12.0
+texture_margin_top = 13.0
+texture_margin_right = 12.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(0, 0, 16, 16)
 
 [resource]
 default_font = ExtResource("1_rewvk")
 default_font_size = 16
+AlternatePanelContainer/base_type = &"PanelContainer"
+AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_2d08q")
+Label/constants/line_spacing = 0
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_7cwug")
