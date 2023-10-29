@@ -1,8 +1,5 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 125
-const ACCELERATION = 25
-
 signal player_died
 
 @onready var damage_timer = $DamageTimer
@@ -10,19 +7,21 @@ signal player_died
 @onready var abilities = $Abilities
 @onready var animation_player = $AnimationPlayer
 @onready var visuals = $Visuals
+@onready var velocity_component = $VelocityComponent
 
 var number_bodies_colliding = 0
+var base_speed: float = 0
 
 func _ready():
+	base_speed = velocity_component.max_speed
 	$HealthBar.value = health_component.get_health_percent()
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 
 
-func _process(delta):
+func _process(_delta):
 	var dir = get_movement_vector().normalized()
-	var target_speed = dir * MAX_SPEED
-	velocity = velocity.lerp(target_speed, 1 - exp(-delta * ACCELERATION))
-	move_and_slide()
+	velocity_component.accelerate(dir)
+	velocity_component.move(self)
 	
 	if dir.x != 0 || dir.y != 0:
 		animation_player.play("walk")
@@ -59,13 +58,18 @@ func _on_damage_timer_timeout():
 
 
 func _on_health_component_health_changed():
+	GameEvents.emit_player_damaged()
 	$HealthBar.value = health_component.get_health_percent()
+	$RandomStreamPlayer2DComponent.play_random()
 
 
 func _on_health_component_died():
 	player_died.emit()
 
 
-func on_ability_upgrade_added(upgrade: AbilityUpgrade, _current_upgrades: Dictionary):
-	if upgrade.ability_controller_scene != null:
+func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+	if upgrade.id == 'player_speed':
+		velocity_component.max_speed = base_speed + (base_speed * current_upgrades['player_speed']['quantity'] * 0.1)
+	elif upgrade.ability_controller_scene != null:
 		abilities.add_child(upgrade.ability_controller_scene.instantiate())
+

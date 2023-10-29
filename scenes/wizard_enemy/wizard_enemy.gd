@@ -21,3 +21,6 @@ func _process(_delta):
 func set_is_moving(value: bool) -> void:
 	is_moving = value
 	
+
+func _on_hurt_box_component_hit():
+	$RandomStreamPlayer2DComponent.play_random()

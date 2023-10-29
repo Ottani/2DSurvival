@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://k0svkftj1ogx"]
+
+[ext_resource type="AudioStream" uid="uid://deaupmpnxpvif" path="res://assets/audio/Behind Enemy Lines.mp3" id="1_fsufn"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_fsufn")
+volume_db = -15.0
+autoplay = true
+bus = &"music"

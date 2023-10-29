@@ -6,6 +6,7 @@ extends Node2D
 
 func _on_area_2d_area_entered(_area):
 	Callable(func(): collision_shape_2d.disabled = true).call_deferred()
+	play_sound()
 	var tween = create_tween()
 	tween.set_parallel()
 	tween.tween_method(tween_collect.bind(global_position), 0.0, 1.0, 0.7)\
@@ -28,4 +29,8 @@ func tween_collect(percent: float, start_position: Vector2):
 func collect():
 	GameEvents.emit_exp_vial_collected(1)
 	queue_free()
+
+
+func play_sound():
+	$RandomStreamPlayer2DComponent.play_random()
 

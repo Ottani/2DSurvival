@@ -11,12 +11,12 @@ func _ready():
 
 func _on_died():
 	if owner == null:
-		print('DeathComponent owner is null')
 		return
+
 	var spawn_pos = owner.global_position
 	var entities = get_tree().get_first_node_in_group('entities_layer')
 	get_parent().remove_child(self)
 	entities.add_child(self)
 	global_position = spawn_pos
 	$AnimationPlayer.play("default")
-	
+	$RandomStreamPlayer2DComponent.play_random()
