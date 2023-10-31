@@ -13,4 +13,4 @@ func transition():
 func transition_to_scene(scene_path: String):
 	transition()
 	await transition_halfway
-	get_tree().change_scene_to_file(scene_path)
+	GameEvents.change_scene.emit(scene_path)

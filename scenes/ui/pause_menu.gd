@@ -47,7 +47,7 @@ func _on_options_button_pressed():
 
 func _on_quit_button_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file('res://scenes/ui/main_menu.tscn')
+	GameEvents.change_scene.emit('res://scenes/ui/main_menu.tscn')
 
 
 func _on_options_closed(scene: Node):
