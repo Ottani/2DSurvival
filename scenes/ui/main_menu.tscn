@@ -40,6 +40,10 @@ text = "The Arena"
 layout_mode = 2
 text = "Play"
 
+[node name="MetaButton" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_41hc2")]
+layout_mode = 2
+text = "Upgrades"
+
 [node name="OptionsButton" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_41hc2")]
 layout_mode = 2
 text = "Options"
@@ -52,5 +56,6 @@ text = "Quit"
 layer = 2
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/MetaButton" to="." method="_on_meta_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -23,7 +23,6 @@ func load_file():
 func save_file():
 	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	file.store_var(save_data)
-	
 
 
 func add_meta_upgrade(upgrade: MetaUpgrade):
@@ -32,6 +31,14 @@ func add_meta_upgrade(upgrade: MetaUpgrade):
 			'quantity': 0
 		}
 	save_data['meta_upgrades'][upgrade.id]['quantity'] += 1
+	save_data['meta_upgrade_currency'] -= upgrade.experience_cost
+	save_file()
+
+
+func get_meta_upgrade_quantity(id: String) -> int:
+	if not save_data['meta_upgrades'].has(id):
+		return 0
+	return save_data['meta_upgrades'][id]['quantity']
 
 
 func _on_experience_collected(number: int):

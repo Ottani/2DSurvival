@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://bktvslyp67vfr"]
+
+[ext_resource type="Script" path="res://scenes/ui/meta_menu.gd" id="1_bjtbo"]
+[ext_resource type="PackedScene" uid="uid://b6p2rlhcad7or" path="res://scenes/ui/meta_upgrade_card.tscn" id="1_iii0e"]
+[ext_resource type="Resource" uid="uid://d0idhrg2w704f" path="res://resources/meta_upgrades/experience_gain.tres" id="2_hsnfu"]
+
+[node name="MetaMenu" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_bjtbo")
+upgrades = Array[Resource("res://resources/meta_upgrades/meta_upgrade.gd")]([ExtResource("2_hsnfu")])
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.607843, 0.298039, 0.639216, 0.352941)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 3
+
+[node name="MetaUpgradeCard" parent="VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_iii0e")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard2" parent="VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_iii0e")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard3" parent="VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_iii0e")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard4" parent="VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_iii0e")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard5" parent="VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_iii0e")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard6" parent="VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_iii0e")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard7" parent="VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_iii0e")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard8" parent="VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_iii0e")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="BackButton" type="Button" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

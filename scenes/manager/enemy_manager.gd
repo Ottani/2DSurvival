@@ -26,7 +26,8 @@ func _on_timer_timeout():
 	var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	for i in 4:
 		var spawn_position = player.global_position + random_direction * SPAWN_RADIUS
-		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position, 1)
+		var addt_check_offset = random_direction * 20
+		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position + addt_check_offset, 1)
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
 		if result.is_empty():
 			var enemy_scene = enemy_table.pick_item()
