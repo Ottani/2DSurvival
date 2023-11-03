@@ -5,6 +5,7 @@ extends CanvasLayer
 
 const meta_upgrade_card_scene: PackedScene = preload('res://scenes/ui/meta_upgrade_card.tscn')
 
+
 func _ready():
 	for child in grid_container.get_children():
 		child.queue_free()

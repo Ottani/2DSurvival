@@ -58,6 +58,10 @@ func _on_damage_timer_timeout():
 
 
 func _on_health_component_health_changed():
+	$HealthBar.value = health_component.get_health_percent()
+
+
+func _on_health_component_health_decreased():
 	GameEvents.emit_player_damaged()
 	$HealthBar.value = health_component.get_health_percent()
 	$RandomStreamPlayer2DComponent.play_random()
@@ -73,3 +77,8 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 	elif upgrade.ability_controller_scene != null:
 		abilities.add_child(upgrade.ability_controller_scene.instantiate())
 
+
+func _on_health_regen_timer_timeout():
+	var qty = MetaProgression.get_meta_upgrade_quantity('health_regen')
+	if qty > 0:
+		health_component.heal(qty)

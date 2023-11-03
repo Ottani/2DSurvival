@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bktvslyp67vfr"]
+[gd_scene load_steps=5 format=3 uid="uid://bktvslyp67vfr"]
 
 [ext_resource type="Script" path="res://scenes/ui/meta_menu.gd" id="1_bjtbo"]
 [ext_resource type="PackedScene" uid="uid://b6p2rlhcad7or" path="res://scenes/ui/meta_upgrade_card.tscn" id="1_iii0e"]
 [ext_resource type="Resource" uid="uid://d0idhrg2w704f" path="res://resources/meta_upgrades/experience_gain.tres" id="2_hsnfu"]
+[ext_resource type="Resource" uid="uid://dhi6xa6sfwfou" path="res://resources/meta_upgrades/health_regen.tres" id="3_tipyr"]
 
 [node name="MetaMenu" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_bjtbo")
-upgrades = Array[Resource("res://resources/meta_upgrades/meta_upgrade.gd")]([ExtResource("2_hsnfu")])
+upgrades = Array[Resource("res://resources/meta_upgrades/meta_upgrade.gd")]([ExtResource("2_hsnfu"), ExtResource("3_tipyr")])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://vebhqtcy0w8h"]
+
+[ext_resource type="Script" path="res://scenes/abilities/anvil_ability/anvil_ability_controller.gd" id="1_bngoj"]
+[ext_resource type="PackedScene" uid="uid://2gveshnuyfut" path="res://scenes/abilities/anvil_ability/anvil_ability.tscn" id="2_h4xte"]
+
+[node name="AnvilAbilityController" type="Node"]
+script = ExtResource("1_bngoj")
+anvil_ability_scene = ExtResource("2_h4xte")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cic66qwofr0u6"
-path="res://.godot/imported/tile_0120.png-31b5d61ec2adc83befa4e63b1dc33421.ctex"
+uid="uid://bh5gd8ckj2c"
+path="res://.godot/imported/anvil.png-68590c0bc466116b5079cdfa93f8d257.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/tile_0120.png"
-dest_files=["res://.godot/imported/tile_0120.png-31b5d61ec2adc83befa4e63b1dc33421.ctex"]
+source_file="res://scenes/abilities/anvil_ability/anvil.png"
+dest_files=["res://.godot/imported/anvil.png-68590c0bc466116b5079cdfa93f8d257.ctex"]
 
 [params]
 

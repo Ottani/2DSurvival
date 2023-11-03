@@ -10,10 +10,13 @@ var upgrade_axe_damage =  preload("res://resources/upgrades/axe_damage.tres") as
 var upgrade_sword_rate = preload("res://resources/upgrades/sword_rate.tres") as AbilityUpgrade
 var upgrade_sword_damage = preload("res://resources/upgrades/sword_damage.tres") as AbilityUpgrade
 var upgrade_player_speed = preload("res://resources/upgrades/player_speed.tres") as AbilityUpgrade
+var upgrade_anvil = preload('res://resources/upgrades/anvil.tres') as AbilityUpgrade
+var upgrade_anvil_quantity = preload('res://resources/upgrades/anvil_quantity.tres') as AbilityUpgrade
 
 
 func _ready():
 	upgrade_pool.add_item(upgrade_axe, 10)
+	upgrade_pool.add_item(upgrade_anvil, 10)
 	upgrade_pool.add_item(upgrade_sword_rate, 10)
 	upgrade_pool.add_item(upgrade_sword_damage, 10)
 	upgrade_pool.add_item(upgrade_player_speed, 5)
@@ -36,12 +39,14 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 		
 	update_upgrade_pool(upgrade)
 	GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)
-	
-	
+
+
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	if chosen_upgrade.id == upgrade_axe.id:
 		upgrade_pool.add_item(upgrade_axe_damage, 10)
-		
+	elif chosen_upgrade.id == upgrade_anvil.id:
+		upgrade_pool.add_item(upgrade_anvil_quantity, 5)
+
 
 func pick_upgrades() -> Array[AbilityUpgrade]:
 	var chosen_upgrades: Array[AbilityUpgrade] = []

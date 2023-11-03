@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://b3oe4hbf8q62b"]
+
+[ext_resource type="PackedScene" uid="uid://vebhqtcy0w8h" path="res://scenes/abilities/anvil_ability/anvil_ability_controller.tscn" id="1_snb04"]
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="2_elc03"]
+
+[resource]
+script = ExtResource("2_elc03")
+id = "anvil"
+max_quantity = 1
+name = "Anvil"
+description = "Drops anvils from the sky"
+ability_controller_scene = ExtResource("1_snb04")

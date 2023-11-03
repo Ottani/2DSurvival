@@ -171,8 +171,14 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
 shape = SubResource("CircleShape2D_du4cp")
 
+[node name="HealthRegenTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[connection signal="health_decreased" from="HealthComponent" to="." method="_on_health_component_health_decreased"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
 [connection signal="body_entered" from="CollisionArea2D" to="." method="_on_collision_area_2d_body_entered"]
 [connection signal="body_exited" from="CollisionArea2D" to="." method="_on_collision_area_2d_body_exited"]
+[connection signal="timeout" from="HealthRegenTimer" to="." method="_on_health_regen_timer_timeout"]

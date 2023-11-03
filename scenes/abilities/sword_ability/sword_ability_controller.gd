@@ -45,4 +45,3 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 			$Timer.start()
 		'sword_damage':
 			damage_percent = 1 + (current_upgrades["sword_damage"]['quantity'] * 0.15)
-	

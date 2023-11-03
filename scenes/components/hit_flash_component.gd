@@ -8,10 +8,11 @@ extends Node
 var hit_flash_tween: Tween
 
 func _ready():
-	health_component.health_changed.connect(_on_health_changed)
+	health_component.health_decreased.connect(_on_health_decreased)
 	sprite.material = hit_flash_material
 
-func _on_health_changed():
+
+func _on_health_decreased():
 	if hit_flash_tween != null and hit_flash_tween.is_valid():
 		hit_flash_tween.kill()
 	
