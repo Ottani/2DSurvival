@@ -8,7 +8,7 @@ const TARGET_EXP_GROWTH = 5
 
 var curr_exp: int = 0
 var curr_lvl: int = 1
-var target_exp: int = 1
+var target_exp: int = 5
 
 
 func _ready():
