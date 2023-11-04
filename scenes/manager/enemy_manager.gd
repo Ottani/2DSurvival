@@ -24,12 +24,17 @@ func _on_timer_timeout():
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return
+	var qty = 0
 	for i in number_to_spawn:
-		_spawn_enemy(player)
+		qty += _spawn_enemy(player)
+	if qty > 0:
+		Globals.add_enemy(qty)
 
 
-func _spawn_enemy(player: Node2D):
+func _spawn_enemy(player: Node2D) -> int:
+	var entities_layer = get_tree().get_first_node_in_group('entities_layer') as Node2D
 	var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
+	
 	for j in 4:
 		var spawn_position = player.global_position + random_direction * SPAWN_RADIUS
 		var addt_check_offset = random_direction * 20
@@ -39,12 +44,11 @@ func _spawn_enemy(player: Node2D):
 			var enemy_scene = enemy_table.pick_item()
 			var enemy = enemy_scene.instantiate() as Node2D
 			enemy.global_position = spawn_position
-			var entities_layer = get_tree().get_first_node_in_group('entities_layer')
 			entities_layer.add_child(enemy)
-			return
+			return 1
 		random_direction = Vector2.RIGHT.rotated(PI / 2)
-	var entities_layer = get_tree().get_first_node_in_group('entities_layer') as Node2D
-	print('enemies: %d' % entities_layer.get_child_count())
+	return 0
+
 
 func _on_arena_difficulty_increased(arena_difficulty: int):
 	var time_off = min((0.1 / 12) *  arena_difficulty, 0.7)

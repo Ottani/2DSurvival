@@ -98,5 +98,4 @@ fixed_fps = 0
 interpolate = false
 
 [node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("3_swnc1")]
-max_distance = 300.0
 streams = Array[AudioStream]([ExtResource("4_y3n4s"), ExtResource("5_8orai"), ExtResource("6_pyix1"), ExtResource("7_hv57i"), ExtResource("8_r28f1")])

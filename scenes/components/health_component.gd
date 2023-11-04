@@ -32,5 +32,6 @@ func heal(hp: int):
 
 func check_death():
 	if curr_health == 0:
+		Globals.del_enemy()
 		died.emit()
 		owner.queue_free()

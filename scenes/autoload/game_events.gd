@@ -5,6 +5,7 @@ signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictiona
 signal player_damaged
 signal change_scene(path_to_scene: String)
 
+
 func emit_exp_vial_collected(number: int):
 	exp_vial_collected.emit(number)
 
