@@ -11,6 +11,7 @@ const SPAWN_RADIUS = 375
 
 var base_spawn_time = 0
 var enemy_table = WeightedTable.new()
+var number_to_spawn = 1
 
 func _ready():
 	enemy_table.add_item(basic_enemy_scene, 10)
@@ -23,9 +24,13 @@ func _on_timer_timeout():
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return
-	
+	for i in number_to_spawn:
+		_spawn_enemy(player)
+
+
+func _spawn_enemy(player: Node2D):
 	var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
-	for i in 4:
+	for j in 4:
 		var spawn_position = player.global_position + random_direction * SPAWN_RADIUS
 		var addt_check_offset = random_direction * 20
 		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position + addt_check_offset, 1)
@@ -38,7 +43,8 @@ func _on_timer_timeout():
 			entities_layer.add_child(enemy)
 			return
 		random_direction = Vector2.RIGHT.rotated(PI / 2)
-
+	var entities_layer = get_tree().get_first_node_in_group('entities_layer') as Node2D
+	print('enemies: %d' % entities_layer.get_child_count())
 
 func _on_arena_difficulty_increased(arena_difficulty: int):
 	var time_off = min((0.1 / 12) *  arena_difficulty, 0.7)
@@ -47,3 +53,5 @@ func _on_arena_difficulty_increased(arena_difficulty: int):
 		enemy_table.add_item(wizard_enemy_scene, 15)
 	elif arena_difficulty == 18:
 		enemy_table.add_item(bat_enemy_scene, 8)
+	if arena_difficulty % 12 == 0:
+		number_to_spawn += 1

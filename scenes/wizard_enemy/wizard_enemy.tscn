@@ -96,7 +96,7 @@ _data = {
 "walk": SubResource("Animation_kgkwa")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_igqyw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5id77"]
 resource_local_to_scene = true
 shader = ExtResource("6_nvjmo")
 shader_parameter/lerp_percent = 0.0
@@ -110,6 +110,7 @@ radius = 4.0
 [node name="WizardEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
 collision_mask = 9
+motion_mode = 1
 script = ExtResource("1_vdhh7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -131,7 +132,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_nr3wu")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_igqyw")
+hit_flash_material = SubResource("ShaderMaterial_5id77")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_4t1pa")]
 health_component = NodePath("../HealthComponent")

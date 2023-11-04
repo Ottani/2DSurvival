@@ -16,7 +16,6 @@ func _process(_delta):
 	if timer.time_left <= next_time_target:
 		arena_difficulty += 1
 		arena_difficulty_increased.emit(arena_difficulty)
-		print('arena difficulty: ' + str(arena_difficulty))
 
 
 func get_time_elapsed() -> float:
