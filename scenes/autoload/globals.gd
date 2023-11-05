@@ -13,3 +13,8 @@ func add_enemy(qty: int) -> void:
 func del_enemy(qty: int = 1) -> void:
 	_enemy_quantity -= qty
 	enemy_quantity_changed.emit(_enemy_quantity)
+
+
+func reset_enemies() -> void:
+	_enemy_quantity = 0
+

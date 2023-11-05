@@ -175,6 +175,10 @@ shape = SubResource("CircleShape2D_du4cp")
 wait_time = 30.0
 autostart = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="health_decreased" from="HealthComponent" to="." method="_on_health_component_health_decreased"]
